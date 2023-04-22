@@ -50,17 +50,32 @@
     </div>
   </div>
   <div class="container__trip-offers-section">
-    <h1 class="container__trip-offers-header">Trip offers</h1>
-    <div class="container__trip-offers">
-      <div class="container__trip-offer" *ngFor="let tripOffer of tripOffers">
-        <img class="container__trip-offer--image" src="{{ tripOffer.image }}" />
-        <div class="container__trip-offer--name">
-          {{ tripOffer.tripDestination }}
+    <h1 class="container__trip-offers-section--header">
+      Check out our most popular trips
+    </h1>
+      <div class="container__carousel" #tripCarousel>
+        <button (click)="movePrevious()" [disabled]="disablePreviousButton()">
+          xd
+        </button>
+        <div class="container__trip-offers" #flexContainer>
+          <div
+            class="container__trip-offer"
+            *ngFor="let tripOffer of displayedTripOffers"
+            #item
+          >
+            <img
+              class="container__trip-offer--image"
+              src="{{ tripOffer.image }}"
+            />
+            <div class="container__trip-offer--name">
+              {{ tripOffer.tripDestination }}
+            </div>
+            <div class="container__trip-offer-description">
+              {{ tripOffer.tripDescription }}
+            </div>
+          </div>
         </div>
-        <div class="container__trip-offer-description">
-          {{ tripOffer.tripDescription }}
-        </div>
+        <button (click)="moveNext()">xd</button>
       </div>
     </div>
-  </div>
 </div>
