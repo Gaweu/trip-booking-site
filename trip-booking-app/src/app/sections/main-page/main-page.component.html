@@ -54,14 +54,14 @@
       Check out our most popular trips
     </h1>
       <div class="container__carousel" #tripCarousel>
-        <button (click)="movePrevious()" [disabled]="disablePreviousButton()">
-          xd
+        <button class="container__carousel--previous-button" (click)="movePrevious()" [disabled]="disablePreviousButton()">
         </button>
         <div class="container__trip-offers" #flexContainer>
           <div
             class="container__trip-offer"
             *ngFor="let tripOffer of displayedTripOffers"
             #item
+            (click)="openDialog(tripOffer)"
           >
             <img
               class="container__trip-offer--image"
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <button (click)="moveNext()">xd</button>
+        <button class="container__carousel--next-button" (click)="moveNext()"></button>
       </div>
     </div>
 </div>

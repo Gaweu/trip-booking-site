@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { single } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { TripPopupComponent } from './trip-popup/trip-popup.component';
 
 @Component({
   selector: 'app-main-page',
@@ -8,10 +9,20 @@ import { single } from 'rxjs';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   @ViewChild('flexContainer', { static: false }) container: ElementRef<HTMLInputElement> = {} as ElementRef;
   @ViewChild('tripCarousel', { static: false }) tripSection: ElementRef<HTMLInputElement> = {} as ElementRef;
+
+  openDialog(selectedItem: any) {
+    const dialogRef = this.dialog.open(TripPopupComponent, {
+      data: { myObject: selectedItem}
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   MIN_GAP = 10;
   counter = 0;
@@ -124,9 +135,9 @@ export class MainPageComponent implements OnInit {
 
 
   tripOffers: {image: string, tripDestination: string, tripDescription: string}[] = [
-    { "image": "../../../assets/employee-photos/employee1.jpg","tripDestination": "John", "tripDescription": "Billy" },
-    { "image": "../../../assets/employee-photos/employee2.jpg","tripDestination": "Bob", "tripDescription": "Krasinski" },
-    { "image": "../../../assets/employee-photos/employee3.jpg","tripDestination": "John", "tripDescription": "Billy" },
+    { "image": "../../../assets/destionation-pictures/switzerland/switzerland1.jpg","tripDestination": "John", "tripDescription": "Billy" },
+    { "image": "../../../assets/destionation-pictures/switzerland/switzerland2.jpg","tripDestination": "Bob", "tripDescription": "Krasinski" },
+    { "image": "../../../assets/destionation-pictures/switzerland/switzerland3.jpg","tripDestination": "John", "tripDescription": "Billy" },
     { "image": "../../../assets/employee-photos/employee3.jpg","tripDestination": "John", "tripDescription": "Billy" },
     { "image": "../../../assets/employee-photos/employee3.jpg","tripDestination": "John", "tripDescription": "Billy" },
     { "image": "../../../assets/employee-photos/employee2.jpg","tripDestination": "Bob", "tripDescription": "Krasinski" },

@@ -123,6 +123,7 @@
         -webkit-box-shadow: 0px 0px 60px 5px rgba(7, 64, 41, 1);
         -moz-box-shadow: 0px 0px 60px 5px rgba(7, 64, 41, 1);
         box-shadow: 0px 0px 60px 5px rgba(7, 64, 41, 1);
+        padding-bottom: 5rem;
 
         &--header {
             color: beige;
@@ -134,13 +135,52 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
+        gap: 1rem;
         max-width: 100%;
         
-        button {
+
+        .button {
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            min-height: 60px;
+            min-width: 60px;
+            width: 80%;
+            padding: 0;
+            border: none;
+            cursor: pointer;
             flex-basis: 5%;
+            fill: pink;
+
         }
+
+        &--previous-button {
+            @extend .button;
+            background: url(../../../assets/shared/chevron_left.svg);
         }
+
+        &--next-button {
+            @extend .button;
+            background: url(../../../assets/shared/chevron_right.svg);
+        }
+    }
+
+    @media only screen and (max-width: 670px)
+    {
+        &__carousel {
+            flex-direction: column;
+
+            &--previous-button {
+                background: url(../../../assets/shared/chevron_up.svg);
+            }
+    
+            &--next-button {
+                background: url(../../../assets/shared/chevron_down.svg);
+            }
+        }
+    }
 
 
     &__trip-offers {
@@ -156,13 +196,13 @@
         align-items: center;
         flex-direction: column;
         background-color: white;
-        border-radius: 10px;
         height: 300px;
         width: 270px;
         overflow: hidden;
+        border-radius: 25px;
 
         &--image {
-            height: 40%;
+            height: 70%;
             width: 100%;
         }
     }
